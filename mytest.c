@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     if(argc != 2) {
         printf("error: not enough input\n");
         printf("       specify either 1 or 2 after command\n");
-        printf("example: ./mytest 1");
+        printf("example: ./mytest 1\n");
         exit(1);
     }
     if(atoi(argv[1]) == 1) {
@@ -39,4 +39,27 @@ void test1() {
 
 void test2() {
     printf("entered test2\n");
+
+    LinkedList list;
+    llist_init(&list);
+    llist_add(&list, 3);
+    llist_add(&list, 2);
+    llist_add(&list, 1);
+    llist_print(&list);
+
+    printf("\n\n");
+
+    if(!llist_insertAt(&list, 27, 1000)) {
+        printf("added at the 1000th index.\n");
+        printf("OH NO! that didn't work!\n");
+        printf("Spoiler Alert: it shouldn't.\n");
+    }
+
+    printf("\n\n");
+    if(!llist_insertAt(&list, 27, 1)) {
+         printf("code doesn't work as intended.\n");
+         printf("debug.\n");
+    } else {
+         llist_print(&list);
+    }
 }
